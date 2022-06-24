@@ -135,6 +135,6 @@ public class DirectConnectorImpl implements DirectConnector {
      */
     @Override
     public byte[] getImage(String url) {
-        return new byte[0];
+        return pixivDirectClient.getImage(url);
     }
 }

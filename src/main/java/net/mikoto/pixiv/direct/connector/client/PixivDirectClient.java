@@ -4,7 +4,6 @@ import com.dtflys.forest.annotation.Address;
 import com.dtflys.forest.annotation.Get;
 import com.dtflys.forest.annotation.LogEnabled;
 import com.dtflys.forest.annotation.Var;
-import com.google.gson.JsonObject;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,7 +17,7 @@ public interface PixivDirectClient {
      * Get the artwork(raw) from pixiv.
      *
      * @param artworkId The artwork id.
-     * @return The json object.
+     * @return Result.
      */
     @Get(
             url = "/ajax/illust/{artworkId}"
@@ -27,6 +26,22 @@ public interface PixivDirectClient {
             scheme = "https",
             host = "www.pixiv.net"
     )
-    @LogEnabled(logResponseContent = true)
+    @LogEnabled(false)
     String getArtwork(@Var("artworkId") int artworkId);
+
+    /**
+     * Get the image from pixiv.
+     *
+     * @param url The image url.
+     * @return Result.
+     */
+    @Get(
+            url = "{url}"
+    )
+    @Address(
+            scheme = "https",
+            host = "i.pximg.net"
+    )
+    @LogEnabled(false)
+    byte[] getImage(@Var("url") String url);
 }
