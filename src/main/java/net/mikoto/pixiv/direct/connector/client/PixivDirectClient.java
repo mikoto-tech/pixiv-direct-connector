@@ -36,7 +36,10 @@ public interface PixivDirectClient {
      * @return Result.
      */
     @Get(
-            url = "{url}"
+            url = "{url}",
+            headers = {
+                    "Referer: https://www.pixiv.net"
+            }
     )
     @Address(
             scheme = "https",
