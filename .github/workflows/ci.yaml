@@ -13,5 +13,5 @@ jobs:
         with:
           java-version: '11'
           distribution: 'adopt'
-      - name: Build with gradle
-        uses: .\gradlew test
+      - name: Build with Gradle
+        run: .\gradlew test
