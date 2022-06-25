@@ -2,7 +2,6 @@ package net.mikoto.pixiv.direct.connector.client;
 
 import com.dtflys.forest.annotation.Address;
 import com.dtflys.forest.annotation.Get;
-import com.dtflys.forest.annotation.LogEnabled;
 import com.dtflys.forest.annotation.Var;
 import org.springframework.stereotype.Component;
 
@@ -26,7 +25,6 @@ public interface PixivDirectClient {
             scheme = "https",
             host = "www.pixiv.net"
     )
-    @LogEnabled(false)
     String getArtwork(@Var("artworkId") int artworkId);
 
     /**
@@ -45,6 +43,5 @@ public interface PixivDirectClient {
             scheme = "https",
             host = "i.pximg.net"
     )
-    @LogEnabled(false)
     byte[] getImage(@Var("url") String url);
 }
