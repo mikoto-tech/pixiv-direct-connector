@@ -20,7 +20,7 @@ import static net.mikoto.pixiv.api.constant.Constants.USUAL_DATE_FORMAT;
 @Component("pixivDirectConnector")
 public class DirectConnectorImpl implements DirectConnector {
     @Qualifier
-    PixivDirectClient pixivDirectClient;
+    private final PixivDirectClient pixivDirectClient;
     private static final String PIXIV_IMAGE_URL = "https://i.pximg.net";
     private static final String SERIES_NAV_DATA = "seriesNavData";
 
