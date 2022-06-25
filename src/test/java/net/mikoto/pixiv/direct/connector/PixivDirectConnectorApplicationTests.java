@@ -1,24 +1,35 @@
 package net.mikoto.pixiv.direct.connector;
 
-import net.mikoto.pixiv.direct.connector.client.PixivDirectClient;
+import net.mikoto.pixiv.api.model.Artwork;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.ComponentScan;
+
+import java.text.ParseException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @ComponentScan("net.mikoto.pixiv")
 @SpringBootApplication
 class PixivDirectConnectorApplicationTests {
     @Autowired
-    PixivDirectClient pixivDirectClient;
+    DirectConnector directConnector;
 
     @Test
-    void directTest() {
-        pixivDirectClient.getArtwork(79905101);
-
+    void directGetArtworkTest() throws ParseException {
+        Artwork artwork = directConnector.getArtwork(91262365);
+        assertEquals(91262365, artwork.getArtworkId());
+        assertEquals("初音ミク", artwork.getArtworkTitle());
+        assertEquals(3259336, artwork.getAuthorId());
+        assertEquals("/c/48x48/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg", artwork.getIllustUrlMini());
+        assertEquals("/img-original/img/2021/07/16/00/48/17/91262365_p0.jpg", artwork.getIllustUrlOriginal());
+        assertEquals("/img-master/img/2021/07/16/00/48/17/91262365_p0_master1200.jpg", artwork.getIllustUrlRegular());
+        assertEquals("/c/540x540_70/img-master/img/2021/07/16/00/48/17/91262365_p0_master1200.jpg", artwork.getIllustUrlSmall());
+        assertEquals("/c/250x250_80_a2/custom-thumb/img/2021/07/16/00/48/17/91262365_p0_custom1200.jpg", artwork.getIllustUrlThumb());
+        assertEquals("初音ミク;足裏;足指;女の子;つま先;裸足;ギリシャ型;美脚;縞パン;VOCALOID10000users入り", artwork.getTags());
     }
 
 }
