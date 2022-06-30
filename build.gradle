@@ -17,7 +17,7 @@ repositories {
             url = uri("https://maven.pkg.github.com/mikoto-tech/pixiv-api")
             credentials {
                 username = project.findProperty("gpr.user") ?: "mikoto2464"
-                password = project.findProperty("gpr.key") ?: "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"
+                password = project.findProperty("gpr.key") ?: "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"
             }
         }
     }
