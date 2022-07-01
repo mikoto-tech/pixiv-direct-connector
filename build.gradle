@@ -12,11 +12,7 @@ sourceCompatibility = '17'
 repositories {
     mavenCentral()
     maven {
-        url = uri("https://maven.pkg.github.com/mikoto-tech/pixiv-api")
-        credentials {
-            username = project.findProperty("gpr.user") ?: "mikoto2464"
-            password = project.findProperty("gpr.key") ?: "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"
-        }
+        url = uri("https://raw.githubusercontent.com/mikoto-tech/maven-repository/master/repository/")
     }
 }
 
@@ -32,42 +28,6 @@ dependencies {
     testImplementation 'com.dtflys.forest:forest-spring-boot-starter:1.5.22'
     testImplementation 'net.mikoto.pixiv:pixiv-api:1.4.3-snapshot-1'
 }
-
-//publishing {
-//    repositories {
-//        maven {
-//            name = "pixiv-direct-connector-packages"
-//            url = uri("https://maven.pkg.github.com/mikoto-tech/pixiv-direct-connector")
-//            credentials {
-//                username = project.findProperty("gpr.user") ?: GITHUB_USERNAME
-//                password = project.findProperty("gpr.key") ?: GITHUB_TOKEN
-//            }
-//        }
-//    }
-//    publications {
-//        gpr(MavenPublication) {
-//            from components.java
-//            pom {
-//                name = "pixiv-direct-connector"
-//                description = "Mikoto pixiv direct connector"
-//                url = "https://mikoto.net.cn"
-//                licenses {
-//                    license {
-//                        name = "GNU Affero General Public License v3.0"
-//                        url = "https://www.gnu.org/licenses/agpl-3.0.en.html"
-//                    }
-//                }
-//                developers {
-//                    developer {
-//                        id = "mikoto"
-//                        name = "Zhang keshun"
-//                        email = "mikoto@ungine.cn"
-//                    }
-//                }
-//            }
-//        }
-//    }
-//}
 
 tasks.named('test') {
     useJUnitPlatform()
